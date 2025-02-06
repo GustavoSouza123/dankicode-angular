@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-12">
+        <h5> {{ user.name }}</h5>
+        <hr>
+        <p>Status do Usuário: {{ user.status }}</p>
+        <button class="btn btn-secondary btn-sm m-1" (click)="onSetTo('ativo')">Ativo</button>
+        <button class="btn btn-secondary btn-sm m-1" (click)="onSetTo('inativo')">Inativo</button>
+        <button class="btn btn-secondary btn-sm m-1" (click)="onSetTo('férias')">Férias</button>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="d-flex align-items-center mt-4 mb-4">
+  <label for="">Nome da escola:</label>
+  <input
+    type="text"
+    class="form-control w-25 mx-2"
+    [(ngModel)]="newSchoolName"
+  />
+
+  <button
+    class="btn btn-primary"
+    [disabled]="!allowNewSchool"
+    (click)="createSchool()"
+  >
+    Adicionar
+  </button>
+</div>
+
+<p class="text-success" *ngIf="schoolCreated; else noSchool">
+  A escola foi criada: {{ newSchoolName }}
+</p>
+<ng-template #noSchool>
+  <p class="text-danger">Nenhuma escola foi criada</p>
+</ng-template>
+
+<app-school *ngFor="let school of schools"></app-school>
+
+
+<!-- <p *ngFor="let school of schools; let i = index">
+  {{ i }}: {{ school }}
+</p> -->
+
+<!-- <input type="text" class="form-control" (input)="updateSchoolName($event)" /> -->
+<!-- <p>{{ newSchoolName }}</p> -->
+<!-- <p [class]="schoolCreated ? 'text-success' : 'text-danger'"></p> -->

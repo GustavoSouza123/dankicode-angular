@@ -1,0 +1,88 @@
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary mb-3" (click)="onlyOdd = !onlyOdd">
+        Mostrar apenas ímpares
+      </button>
+
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let number of oddNumbers"
+            [ngClass]="{ odd: number % 2 !== 0 }"
+            [ngStyle]="{
+              backgroundColor: number % 2 !== 0 ? 'lightcoral' : 'lightblue'
+            }"
+          >
+            {{ number }}
+          </li>
+        </div>
+
+        <!-- <div *ngIf="!onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let number of evenNumbers"
+            [ngClass]="{ even: number % 2 === 0 }"
+            [ngStyle]="{
+              backgroundColor: number % 2 !== 0 ? 'lightcoral' : 'lightblue'
+            }"
+          >
+            {{ number }}
+          </li>
+        </div> -->
+
+        <!-- the *ngIf syntax exists so that I don't have to use <ng-template> -->
+        <!-- whenever I want to add an HTML element conditionally -->
+
+        <!-- <ng-template [ngIf]="!onlyOdd">
+          <div>
+            <li
+              class="list-group-item"
+              *ngFor="let number of evenNumbers"
+              [ngClass]="{ even: number % 2 === 0 }"
+              [ngStyle]="{
+                backgroundColor: number % 2 !== 0 ? 'lightcoral' : 'lightblue'
+              }"
+            >
+              {{ number }}
+            </li>
+          </div>
+        </ng-template> -->
+
+        <!-- same as *ngIf="!onlyOdd" -->
+        <div *appUnless="onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let number of evenNumbers"
+            [ngClass]="{ even: number % 2 === 0 }"
+            [ngStyle]="{
+              backgroundColor: number % 2 !== 0 ? 'lightcoral' : 'lightblue'
+            }"
+          >
+            {{ number }}
+          </li>
+        </div>
+      </ul>
+
+      <p class="mt-3" appDanger>Estilizando com o Highlight directive</p>
+      <p
+        class="mt-3"
+        appWarning
+        [defaultColor]="'orange'"
+        [highlight]="'yellow'"
+      >
+        Estilizando com o Highlight directive
+      </p>
+      <!-- it is recommended to use property binding on directive attributes -->
+      <!-- this way I won't confuse directive attributes with HTML attributes -->
+
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="10">O valor é 10</p>
+        <p *ngSwitchCase="20">O valor é 20</p>
+        <p *ngSwitchCase="30">O valor é 30</p>
+        <p *ngSwitchDefault>Qualquer outro valor</p>
+      </div>
+    </div>
+  </div>
+</div>
