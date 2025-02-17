@@ -3,13 +3,32 @@
     <div class="col-12 col-sm-10 col-md-8">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Home
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Produtos</a>
+          <a
+            class="nav-link"
+            [routerLink]="['products']"
+            routerLinkActive="active"
+          >
+            Produtos
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Fornecedores</a>
+          <a
+            class="nav-link"
+            [routerLink]="['suppliers']"
+            routerLinkActive="active"
+          >
+            Fornecedores
+          </a>
         </li>
       </ul>
     </div>
@@ -17,19 +36,7 @@
 
   <div class="row">
     <div class="col-12 col-sm-10 col-md-8">
-      <app-home></app-home>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 col-sm-10 col-md-8">
-      <app-products></app-products>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 col-sm-10 col-md-8">
-      <app-suppliers></app-suppliers>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
