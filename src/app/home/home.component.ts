@@ -15,4 +15,11 @@ export class HomeComponent implements OnInit {
   loadProducts() {
     this.router.navigate(['/products']);
   }
+
+  loadProduct(id: number) {
+    this.router.navigate(['/products', id, 'edit'], {
+      queryParams: { allowEditing: '1' },
+      fragment: 'loading',
+    });
+  }
 }

@@ -1,2 +1,4 @@
-<p>Fornecedor com o ID {{ supplier?.id }}</p>
-<p>Fornecedor com o nome {{ supplier?.name }}</p>
+<p>Fornecedor com o ID {{ supplier?.id || 'null' }}</p>
+<p>Fornecedor com o nome {{ supplier?.name || 'null' }}</p>
+<hr />
+<a [routerLink]="['/suppliers', 6, 'Gustavo']">Carregar Gustavo(6)</a>

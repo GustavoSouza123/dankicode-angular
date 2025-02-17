@@ -25,7 +25,10 @@ export class ProductsService {
     return this.products.find((p) => p.id === id);
   }
 
-  updateProduct(id: number, productInfo: { name: string; status: string }) {
+  updateProduct(
+    id: number | undefined,
+    productInfo: { name: string; status: string }
+  ) {
     const product = this.products.find((p) => p.id === id);
 
     if (product) {

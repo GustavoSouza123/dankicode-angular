@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 import { ProductsService } from './products.service';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProductComponent } from './product/product.component';
@@ -7,7 +9,7 @@ import { ProductComponent } from './product/product.component';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, EditProductComponent, ProductComponent],
+  imports: [CommonModule, RouterLink, EditProductComponent, ProductComponent],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
