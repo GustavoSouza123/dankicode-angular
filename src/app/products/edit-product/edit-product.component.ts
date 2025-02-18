@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { ProductsService } from '../products.service';
 
@@ -16,6 +16,7 @@ export class EditProductComponent implements OnInit {
   product?: { id: number; name: string; status: string };
   productName?: string = '';
   productStatus?: string = '';
+  allowEditing: boolean = false;
 
   constructor(
     private productsService: ProductsService,
@@ -23,11 +24,13 @@ export class EditProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.queryParams);
-    console.log(this.route.snapshot.fragment);
+    // console.log(this.route.snapshot.queryParams);
+    // console.log(this.route.snapshot.fragment);
 
-    // this.route.queryParams.subscribe();
-    // this.route.fragment.subscribe();
+    this.route.queryParams.subscribe((params: Params) => {
+      this.allowEditing = params['allowEditing'] === '1';
+    });
+    this.route.fragment.subscribe();
 
     this.product = this.productsService.getProduct(1);
     this.productName = this.product?.name;

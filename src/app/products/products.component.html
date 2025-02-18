@@ -2,8 +2,8 @@
   <div class="col-12 col-sm-4">
     <div class="list-group">
       <a
-        [routerLink]="['/products', 5, 'edit']"
-        [queryParams]="{ allowEditing: '1' }"
+        [routerLink]="['/products', product.id]"
+        [queryParams]="{ allowEditing: product.id === 1 ? '1' : '0' }"
         fragment="loading"
         class="list-group-item"
         *ngFor="let product of products"
@@ -14,8 +14,9 @@
   </div>
 
   <div class="col-12 col-sm-4">
-    <app-edit-product></app-edit-product>
-    <hr />
-    <app-product></app-product>
+    <router-outlet></router-outlet>
+    <!-- <app-edit-product></app-edit-product> -->
+    <!-- <hr /> -->
+    <!-- <app-product></app-product> -->
   </div>
 </div>

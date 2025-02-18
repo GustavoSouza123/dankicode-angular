@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SupplierComponent } from './supplier/supplier.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-suppliers',
   standalone: true,
-  imports: [CommonModule, SupplierComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './suppliers.component.html',
   styleUrls: ['./suppliers.component.css'],
 })
