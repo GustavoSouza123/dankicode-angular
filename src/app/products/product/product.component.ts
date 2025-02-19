@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { IProduct, ProductsService } from '../products.service';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  public product?: { id: number; name: string; status: string };
+  public product?: IProduct;
 
   constructor(
     private productsService: ProductsService,
@@ -21,9 +21,15 @@ export class ProductComponent implements OnInit {
     // getting route parameter through route snapshot
     // const id = +this.route.snapshot.params['id'];
     // this.product = this.productsService.getProduct(id);
+    //
+    // this.route.params.subscribe((params: Params) => {
+    //   this.product = this.productsService.getProduct(+params['id']);
+    // });
 
-    this.route.params.subscribe((params: Params) => {
-      this.product = this.productsService.getProduct(+params['id']);
+    // get product through router guard (resolver) instead of product service
+		// useful especially when fetching async data
+    this.route.data.subscribe((data: Data) => {
+      this.product = data['product'];
     });
   }
 

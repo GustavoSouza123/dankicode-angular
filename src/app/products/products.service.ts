@@ -1,5 +1,11 @@
+export interface IProduct {
+  id: number;
+  name: string;
+  status: string;
+}
+
 export class ProductsService {
-  private products = [
+  private products: IProduct[] = [
     {
       id: 1,
       name: 'TV de 15 Polegadas',
@@ -22,7 +28,7 @@ export class ProductsService {
   }
 
   getProduct(id: number) {
-    return this.products.find((p) => p.id === id);
+    return this.products.find((p) => p.id === id) as IProduct;
   }
 
   updateProduct(
