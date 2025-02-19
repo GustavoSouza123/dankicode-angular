@@ -9,6 +9,7 @@ import { ProductComponent } from './products/product/product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './products/edit-product/can-deactivate-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,11 @@ export const routes: Routes = [
     component: SuppliersComponent,
     children: [{ path: ':id/:name', component: SupplierComponent }],
   },
-  { path: 'not-found', component: PageNotFoundComponent },
+  // { path: 'not-found', component: PageNotFoundComponent },
+  {
+    path: 'not-found',
+    component: ErrorPageComponent,
+    data: { message: 'Página não encontrada!' },
+  },
   { path: '**', redirectTo: '/not-found' },
 ];
