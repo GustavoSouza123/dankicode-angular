@@ -12,9 +12,11 @@
   <div class="form-group">
     <label for="status">Status</label>
     <select id="status" class="form-control" [(ngModel)]="productStatus">
-      <option value="online">Ativo</option>
-      <option value="offline">Inativo</option>
+      <option value="disponível">Disponível</option>
+      <option value="indisponível">Indisponível</option>
     </select>
   </div>
-  <button class="btn btn-sm btn-success my-2">Atualizar Produto</button>
+  <button class="btn btn-sm btn-success my-2" (click)="onUpdateProduct()">
+    Atualizar Produto
+  </button>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private router: Router) {}
+  authenticated?: string;
 
-  ngOnInit(): void {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.checkAuth();
+  }
 
   loadProducts() {
     this.router.navigate(['/products']);
@@ -20,6 +25,22 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/products', id, 'edit'], {
       queryParams: { allowEditing: '1' },
       fragment: 'loading',
+    });
+  }
+
+  login(): void {
+    this.authService.login();
+    this.checkAuth();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.checkAuth();
+  }
+
+  checkAuth(): void {
+    this.authService.isAuthenticated().then((authenticated: boolean) => {
+      this.authenticated = authenticated ? 'autenticado' : 'não autenticado';
     });
   }
 }

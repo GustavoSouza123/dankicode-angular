@@ -7,15 +7,23 @@ import { SupplierComponent } from './suppliers/supplier/supplier.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { ProductComponent } from './products/product/product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './products/edit-product/can-deactivate-guard.service';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'products',
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     component: ProductsComponent,
     children: [
       { path: ':id', component: ProductComponent },
-      { path: ':id/edit', component: EditProductComponent },
+      {
+        path: ':id/edit',
+        canDeactivate: [CanDeactivateGuard],
+        component: EditProductComponent,
+      },
     ],
   },
   {
