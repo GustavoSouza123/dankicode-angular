@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 import { ProductsService } from './products.service';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { ProductComponent } from './product/product.component';
 
 @Component({
   selector: 'app-products',
@@ -13,8 +11,6 @@ import { ProductComponent } from './product/product.component';
     CommonModule,
     RouterOutlet,
     RouterLink,
-    EditProductComponent,
-    ProductComponent,
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
